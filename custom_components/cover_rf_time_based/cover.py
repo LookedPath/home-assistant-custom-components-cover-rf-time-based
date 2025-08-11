@@ -104,7 +104,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     }
 )
 
-POSITION_SCHEMA = vol.Schema(
+POSITION_SCHEMA = cv.make_entity_service_schema(
     {
         vol.Required(ATTR_POSITION): cv.positive_int,
         vol.Optional(ATTR_CONFIDENT, default=False): cv.boolean,
@@ -113,7 +113,7 @@ POSITION_SCHEMA = vol.Schema(
 )
 
 
-ACTION_SCHEMA = vol.Schema({vol.Required(ATTR_ACTION): cv.string})
+ACTION_SCHEMA = cv.make_entity_service_schema({vol.Required(ATTR_ACTION): cv.string})
 
 
 DOMAIN = "cover_rf_time_based"
