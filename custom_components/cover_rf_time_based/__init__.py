@@ -1,12 +1,14 @@
 """Set up the Cover Time Based integration and its observation services."""
 
 from homeassistant.const import Platform
+from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers import service
 
 from .const import DOMAIN, SERVICE_SET_KNOWN_ACTION, SERVICE_SET_KNOWN_POSITION
 from .schema import ACTION_FIELDS, POSITION_FIELDS
 
 PLATFORMS = [Platform.COVER]
+CONFIG_SCHEMA = cv.platform_only_config_schema(DOMAIN)
 
 
 async def async_setup(hass, config):
