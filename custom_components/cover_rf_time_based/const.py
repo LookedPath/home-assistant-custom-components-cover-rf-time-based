@@ -1,0 +1,27 @@
+"""Constants shared by YAML configuration, config flows and entities."""
+
+DOMAIN = "cover_rf_time_based"
+CONF_DEVICES = "devices"
+CONF_ALIASES = "aliases"
+CONF_TRAVELLING_TIME_DOWN = "travelling_time_down"
+CONF_TRAVELLING_TIME_UP = "travelling_time_up"
+CONF_SEND_STOP_AT_ENDS = "send_stop_at_ends"
+CONF_ALWAYS_CONFIDENT = "always_confident"
+CONF_OPEN_SCRIPT_ENTITY_ID = "open_script_entity_id"
+CONF_CLOSE_SCRIPT_ENTITY_ID = "close_script_entity_id"
+CONF_STOP_SCRIPT_ENTITY_ID = "stop_script_entity_id"
+CONF_COVER_ENTITY_ID = "cover_entity_id"
+CONF_AVAILABILITY_TPL = "availability_template"
+CONF_CONTROL_TYPE = "control_type"
+DEFAULT_TRAVEL_TIME = 25
+DEFAULT_SEND_STOP_AT_ENDS = False
+DEFAULT_ALWAYS_CONFIDENT = False
+DEFAULT_DEVICE_CLASS = "shutter"
+ATTR_CONFIDENT = "confident"
+ATTR_ACTION = "action"
+ATTR_POSITION_TYPE = "position_type"
+ATTR_POSITION_TYPE_CURRENT = "current"
+ATTR_POSITION_TYPE_TARGET = "target"
+ATTR_UNCONFIRMED_STATE = "unconfirmed_state"
+SERVICE_SET_KNOWN_POSITION = "set_known_position"
+SERVICE_SET_KNOWN_ACTION = "set_known_action"

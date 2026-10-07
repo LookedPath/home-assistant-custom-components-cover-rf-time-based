@@ -1,13 +1,16 @@
 {
   "domain": "cover_rf_time_based",
   "name": "Cover Time Based (script/entity)",
-  "version": "1.1.4",
-  "documentation": "https://github.com/LookedPath/home-assistant-custom-components-cover-rf-time-based",
-  "iot_class": "assumed_state",
   "codeowners": [
     "@davidramosweb",
     "@nagyrobi",
     "@Alfiegerner",
     "@LookedPath"
-  ]
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/LookedPath/home-assistant-custom-components-cover-rf-time-based",
+  "integration_type": "helper",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/LookedPath/home-assistant-custom-components-cover-rf-time-based/issues",
+  "version": "2026.10.1"
 }

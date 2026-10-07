@@ -1,0 +1,131 @@
+{
+  "title": "Cover Time Based (script/entity)",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add a time-based cover",
+        "description": "Choose how to send opening, closing and stop commands.",
+        "data": {
+          "name": "Name",
+          "control_type": "Control method"
+        }
+      },
+      "cover": {
+        "title": "Use an existing cover",
+        "description": "Select a cover that accepts open, close and stop commands. Enter its measured travel times.",
+        "data": {
+          "cover_entity_id": "Source cover",
+          "travelling_time_up": "Opening travel time (seconds)",
+          "travelling_time_down": "Closing travel time (seconds)",
+          "send_stop_at_ends": "Send stop at fully open and fully closed",
+          "always_confident": "Always treat the estimated position as confirmed",
+          "device_class": "Cover type",
+          "availability_template": "Availability template"
+        },
+        "data_description": {
+          "travelling_time_up": "Measure a full opening movement using the original controller.",
+          "travelling_time_down": "Measure a full closing movement using the original controller.",
+          "send_stop_at_ends": "Enable when your controller needs a stop command to release its relays.",
+          "always_confident": "Leave disabled for RF covers or when commands may be missed.",
+          "availability_template": "Optional template returning true or false, for example the availability of your RF bridge. Leave empty to keep the cover available."
+        }
+      },
+      "scripts": {
+        "title": "Use three scripts",
+        "description": "Select the scripts that send open, close and stop commands. Enter the measured travel times.",
+        "data": {
+          "open_script_entity_id": "Open script",
+          "close_script_entity_id": "Close script",
+          "stop_script_entity_id": "Stop script",
+          "travelling_time_up": "Opening travel time (seconds)",
+          "travelling_time_down": "Closing travel time (seconds)",
+          "send_stop_at_ends": "Send stop at fully open and fully closed",
+          "always_confident": "Always treat the estimated position as confirmed",
+          "device_class": "Cover type",
+          "availability_template": "Availability template"
+        },
+        "data_description": {
+          "travelling_time_up": "Measure a full opening movement using the original controller.",
+          "travelling_time_down": "Measure a full closing movement using the original controller.",
+          "send_stop_at_ends": "Enable when your controller needs a stop command to release its relays.",
+          "always_confident": "Leave disabled for RF covers or when commands may be missed.",
+          "availability_template": "Optional template returning true or false, for example the availability of your RF bridge. Leave empty to keep the cover available."
+        }
+      }
+    },
+    "error": {
+      "invalid_config": "Check that travel times are positive and the correct source entities are selected.",
+      "invalid_template": "Enter a valid Home Assistant template.",
+      "invalid_source": "Select a source cover from another integration to avoid a control loop."
+    },
+    "abort": {
+      "already_configured": "This command source is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Calibration and display",
+        "description": "Changing these settings reloads the cover. Apply them while the cover is stopped.",
+        "data": {
+          "travelling_time_up": "Opening travel time (seconds)",
+          "travelling_time_down": "Closing travel time (seconds)",
+          "send_stop_at_ends": "Send stop at fully open and fully closed",
+          "always_confident": "Always treat the estimated position as confirmed",
+          "device_class": "Cover type",
+          "availability_template": "Availability template"
+        },
+        "data_description": {
+          "travelling_time_up": "Measure a full opening movement using the original controller.",
+          "travelling_time_down": "Measure a full closing movement using the original controller.",
+          "send_stop_at_ends": "Enable when your controller needs a stop command to release its relays.",
+          "always_confident": "Leave disabled for RF covers or when commands may be missed.",
+          "availability_template": "Optional template returning true or false, for example the availability of your RF bridge. Leave empty to keep the cover available."
+        }
+      }
+    },
+    "error": {
+      "invalid_config": "Check that travel times are positive and the correct source entities are selected.",
+      "invalid_template": "Enter a valid Home Assistant template.",
+      "invalid_source": "Select a source cover from another integration to avoid a control loop."
+    }
+  },
+  "selector": {
+    "control_type": {
+      "options": {
+        "cover": "Existing cover entity",
+        "scripts": "Three scripts"
+      }
+    }
+  },
+  "services": {
+    "set_known_position": {
+      "name": "Set known position",
+      "description": "Update the estimated position from an external observation without sending motor commands.",
+      "fields": {
+        "position": {
+          "name": "Position",
+          "description": "Position between 0 (closed) and 100 (fully open)."
+        },
+        "confident": {
+          "name": "Confident",
+          "description": "An external sensor has confirmed this position."
+        },
+        "position_type": {
+          "name": "Position type",
+          "description": "Target simulates travel; current corrects the position immediately, preserving the target if moving."
+        }
+      }
+    },
+    "set_known_action": {
+      "name": "Set known action",
+      "description": "Observe an external open, close or stop command without sending motor commands.",
+      "fields": {
+        "action": {
+          "name": "Action",
+          "description": "The action observed outside Home Assistant."
+        }
+      }
+    }
+  }
+}
